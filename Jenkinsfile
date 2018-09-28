@@ -1,12 +1,19 @@
 node {
-	stage 'Checkout'
+	stage ('Checkout')
+	{
 		checkout scm
-
-	stage 'Docker-Build'
+	}
+	stage ('Docker-Build')
+	{
 		sh './docker-image.sh'
-	stage 'Test'
+	}
+	stage ('Test')
+	{
 		echo 'Testing...'
-	stage 'Deploy'
+	}
+	stage ('Deploy')
+	{
 		archive 'Deploying...'
+	}
 
 }
