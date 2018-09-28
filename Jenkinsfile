@@ -13,7 +13,7 @@ node {
 	}
 	stage ('Deploy')
 	{
-		archive 'Deploying...'
+		echo 'Deploying...'
 	}
 
 }
