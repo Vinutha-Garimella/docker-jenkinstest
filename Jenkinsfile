@@ -1,27 +1,12 @@
-pipeline {
-    agent any
-    stages {
-	
-   	 stage('Checkout') {
-	 steps{
+node {
+	stage 'Checkout'
 		checkout scm
-	       }	
-   	 }
-        stage('DockerBuild') {
-            steps {
-                sh './docker-image.sh'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-}
 
+	stage 'Docker-Build'
+		sh './docker-image.sh'
+	stage 'Test'
+		echo 'Testing...'
+	stage 'Deploy'
+		archive 'Deploying...'
+
+}
