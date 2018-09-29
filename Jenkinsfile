@@ -1,21 +1,19 @@
-pipeline {
-    agent any
-    stages {
-        stage('DockerBuild') {
-            steps {
-                sh './docker-image.sh'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-}
+node {
+	stage ('Checkout')
+	{
+		checkout scm
+	}
+	stage ('Docker-Build')
+	{
+		sh './docker-image.sh'
+	}
+	stage ('Test')
+	{
+		echo 'Testing...'
+	}
+	stage ('Deploy')
+	{
+		echo 'Deploying...'
+	}
 
+}
